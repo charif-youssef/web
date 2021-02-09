@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="valide2s.css">
+    <title>Document</title>
+    <script>
+        function veriffier(){
+            var nom=document.querySelector("#nom");
+            var msg=document.querySelector("#msg");
+            var rsd=document.querySelector("#rsd");
+            var emal=document.querySelector("#email");
+            var agee=document.querySelector("#age");
+            var chek1=document.querySelector(".checks");
+          
+            
+            let rg=/^[A-Z]+$/g;
+            let r=/^[A-Z]+$/g;
+           
+            let rgage=/^[1-9]{2}$/g;
+            if(nom.value=="" )
+            {
+                msg.innerHTML="il faut remplire le nom";   
+                return;
+            }
+            if(rg.test(nom.value)==false )
+            {
+              msg.innerHTML="Nom est obligatoire et ne doit pas contenir que des caractères miniscule";
+              return;
+            }
+            if(rsd.value=="")
+            {
+                msg.innerHTML="il faut remplire le Résidence";
+                return;
+            }
+            if(r.test(rsd.value)==false)
+            {
+                msg.innerHTML="Résidence est obligatoire et ne doit pas contenir que des caractères miniscule";
+                return;
+            }
+           if(agee.value=="")
+           {
+              msg.innerHTML="il faut remplire age";
+              return;
+           }
+           if(rgage.test(agee.value)==false)
+           {
+            msg.innerHTML="Age doit être un chiffre  ";
+              return;
+           }else
+           {
+             if(agee.value <=18)
+             {
+              msg.innerHTML="Age doit être supérieur a 18 ans";
+              return;
+             }
+           }
+           let rm =new RegExp("^([a-zA-Z\.-_]+)@([a-zA-Z_-]+).(com||ma)$");
+           if(emal.value=="")
+           {
+            msg.innerHTML="il faut remplire e-mail";
+            return;
+           }else if(rm.test(emal.value)==false)
+           {
+            msg.innerHTML="Le format de l email doit être correcte fini par un .com ou .ma ";   
+            return;
+           }
+            //controler et stocker les valeur des checkbox avec un séparateur ","
+             var checks = document.querySelectorAll(".checks");
+             var cp=0;
+              var lp=[];
+            for(var i=0;i<checks.length;i++)
+             {
+              if(checks[i].checked == true)
+              {                               
+               cp++;
+             
+               lp.push(checks[i].value);
+              }  
+             }
+            if(cp<2)
+              { 
+                msg.innerHTML="Au moins deux langues doit être cocher";
+                 return;
+              } 
+              msg.innerHTML="Nom : "+nom.value+"<br/>"+"Résidence : "+rsd.value+"<br/>"+"E-mail : "+
+    emal.value+"<br/>"+"Age : "+agee.value+"<br/>Langue parlé : "+lp+"<br/><br/>";
+    let X = {nom:nom.value,residence:res.value,Email:email.value,Age:age.value,Langue_parle:lp};
+    localStorage.setItem('infos',JSON.stringify(X));
+    //recupperre les infos stocker 
+    var y = localStorage.getItem('infos');
+    console.log(y);
+    console.log('Informations : ',JSON.parse(y));
+          }
+          //show data from local storage loading page
+function Afflocalstorage()
+{  
+    if(localStorage.getItem('infos')!==null)
+    {        
+        var lclstrg_string =localStorage.getItem('infos');
+        var lclstrg_obj = JSON.parse(lclstrg_string);
+        console.log(lclstrg_string);        
+        document.getElementById("d2").innerHTML=
+        "Nom : "+lclstrg_obj.nom+" <br/>"+"Résidence : "+lclstrg_obj.residence+
+        " <br/>"+"E-mail : "+lclstrg_obj.Email+"<br/>"+"Age : "+lclstrg_obj.Age+"<br/>Langue parlé : "+
+        lclstrg_obj.Langue_parle+"<br/><br/>";
+    }
+}
+
+    </script>
+</head>
+<body>
+    <div class="frm">
+   
+     <form>
+      <input type="text" placeholder="nom" id="nom" ><br>
+      <input type="text" placeholder="Résidence" id="rsd"><br>
+      <input type="text" placeholder="E-mail" id="email"><br>
+      <input type="text" placeholder="Age" id="age"><br>
+     
+      
+      <label class="txt">langue parler  </label>
+      <label class="txt">FR</label>
+      <input type="checkbox" value="fr" class="checks">
+       <label class="txt">AR</label>
+      <input type="checkbox" value="ar" class="checks">
+        <label class="txt">ENG</label>
+      <input type="checkbox" value="eng"class="checks"><br>
+  
+    
+     <select name="se" id="chek">
+        <option value="0">selectin un proffissen</option>
+     </select>
+    <br>
+    <input type="button" value="Envoyer" id="btnenvoyer" onclick=" veriffier();">
+    <input type="button" value="interrompre" id="btnenvoyer">
+     </form>
+    </div>
+    <div class="s">
+      <div class="ms">
+        <div class="msg" id="msg"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body{
+    background: #4A707A;
+}
+
+.frm{
+    position: absolute;
+    top: 20%;
+    right: 40%;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid  #3498db;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    background: #0d2137;
+    box-shadow: 10px 10px 10px  #3498db54;
+}
+#nom,#rsd,#email,#age
+{
+ margin-bottom: 10px;
+ border: 2px solid #3498db;
+ border-radius: 10px;
+ background: none;
+ text-align: center;
+ width: 150px;
+ height: 20px;
+ color: rgb(231, 216, 216);
+
+}
+#nom:focus,#rsd:focus,#email:focus,#age:focus
+{
+
+    border: 2px solid  #2ecc71;
+    outline: none;
+}
+.txt
+{
+color: rgba(255, 255, 255, 0.61);
+
+}
+#btnenvoyer ,#btnenvoyer
+{
+    width: 90px;
+    height: 22px;
+    margin-top: 10px;
+    text-transform: inherit;
+    font-weight:  500;
+    transition: 0,25s;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid #3498db;
+    background: none;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.541);
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+#chek
+{
+background: none;
+border-radius: 10px;
+border: 2px solid #3498db;
+}
+#btnenvoyer:hover ,#btnenvoyer:hover
+{
+ background: #2ecc71;
+ color: black;
+ font-size: 15px;
+ font-family: Arial, Helvetica, sans-serif;
+}
+.s
+{
+    width: 200px;
+    height: 340px;
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    border-radius: 20px;
+    background: #E0EAF5;
+}
+.ms{
+    width: 200px;
+    height: 300px;
+    border-radius: 10PX;
+    border-bottom-left-radius: 70px ;
+    border-bottom-right-radius: 0px ;
+    background: #0d2137;
+}
+.msg{
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
